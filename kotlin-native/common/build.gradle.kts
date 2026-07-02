@@ -36,7 +36,9 @@ kotlinNativeInterop {
         pkg("org.jetbrains.kotlin.backend.konan.files")
         linker("clang++")
         if (PlatformInfo.isMac()) {
-            linkerOpts("-Xlinker", "-lto_library", "-Xlinker", "KT-69382")
+//            linkerOpts("-Xlinker", "-lto_library", "-Xlinker", "KT-69382")
+            linkerOpts("-Xlinker")
+            linkerOpts("-lto_library", "~/.konan/dependencies/llvm-11.1.0-macos-aarch64-dev-20250903/lib/libLTO.dylib")
         }
         linkOutputs(bitcode.hostTarget.module("files").get().sourceSets.main.get().task.get())
         headers(layout.projectDirectory.files("src/files/headers/Files.h"))
@@ -46,7 +48,9 @@ kotlinNativeInterop {
         pkg("org.jetbrains.kotlin.backend.konan.env")
         linker("clang++")
         if (PlatformInfo.isMac()) {
-            linkerOpts("-Xlinker", "-lto_library", "-Xlinker", "KT-69382")
+//            linkerOpts("-Xlinker", "-lto_library", "-Xlinker", "KT-69382")
+            linkerOpts("-Xlinker")
+            linkerOpts("-lto_library", "~/.konan/dependencies/llvm-11.1.0-macos-aarch64-dev-20250903/lib/libLTO.dylib")
         }
         linkOutputs(bitcode.hostTarget.module("env").get().sourceSets.main.get().task.get())
         headers(layout.projectDirectory.files("src/env/headers/Env.h"))

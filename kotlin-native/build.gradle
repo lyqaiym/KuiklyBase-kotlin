@@ -69,6 +69,23 @@ def platformManager = project.extensions.platformManager
 def distDir = UtilsKt.getKotlinNativeDist(project)
 def hostName = PlatformInfo.hostName
 def targetList = EnabledTargetsKt.enabledTargets(platformManager).collect { it.visibleName } as List
+//targetList.remove("linux_arm64")
+//targetList.remove("linux_arm32_hfp")
+//targetList.remove("ios_arm64")
+//targetList.remove("ios_simulator_arm64")
+//targetList.remove("tvos_arm64")
+//targetList.remove("tvos_simulator_arm64")
+//targetList.remove("macos_arm64")
+//targetList.remove("watchos_arm32")
+//targetList.remove("watchos_arm64")
+//targetList.remove("watchos_simulator_arm64")
+//targetList.remove("watchos_device_arm64")
+targetList.remove("macos_x64")
+targetList.remove("watchos_x64")
+targetList.remove("tvos_x64")
+targetList.remove("ios_x64")
+targetList.remove("linux_x64")
+targetList.remove("mingw_x64")
 def cacheableTargetNames = platformManager.hostPlatform.cacheableTargets
 
 // region @Tencent: Argument of '-lto_library' should end with 'libLTO.dylib' since Xcode 16.3, 
